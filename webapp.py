@@ -58,7 +58,7 @@ df = pd.DataFrame(movies)
 def recommend(movie):
     index = df[df['title'] == movie].index[0]
     distances = similarity[index]
-    movie_list = sorted(list(enumerate(distances)),reverse=True,key = lambda x: x[1])[1:6]
+    movie_list = sorted(list(enumerate(distances)),reverse=True,key = lambda x: x[1])[1:7]
     
     rec_movies = []
     rec_poster = []
@@ -91,7 +91,7 @@ def main():
 
         st.write('Similar Movies:')
         movie_names, movie_posters = recommend(option)
-        col1, col2, col3, col4, col5 = st.columns(5)
+        col1, col2, col3, col4, col5, col6 = st.columns(6)
         with col1:
             st.text(movie_names[0])
             st.image(movie_posters[0])
@@ -108,6 +108,9 @@ def main():
         with col5:
             st.text(movie_names[4])
             st.image(movie_posters[4])
+        with col6:
+            st.text(movie_names[5])
+            st.image(movie_posters[5])
 
 if __name__ == "__main__":
     main()
