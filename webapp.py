@@ -94,23 +94,22 @@ def main():
         col1, col2, col3, col4, col5, col6 = st.columns(6)
         with col1:
             st.text(movie_names[0])
-            st.image(movie_posters[0])
+            st.image(movie_posters[0], width=100)
         with col2:
             st.text(movie_names[1])
-            st.image(movie_posters[1])
-
+            st.image(movie_posters[1], width=100)
         with col3:
             st.text(movie_names[2])
-            st.image(movie_posters[2])
+            st.image(movie_posters[2], width=100)
         with col4:
             st.text(movie_names[3])
-            st.image(movie_posters[3])
+            st.image(movie_posters[3], width=100)
         with col5:
             st.text(movie_names[4])
-            st.image(movie_posters[4])
+            st.image(movie_posters[4], width=100)
         with col6:
             st.text(movie_names[5])
-            st.image(movie_posters[5])
+            st.image(movie_posters[5], width=100)
 
 if __name__ == "__main__":
     main()
