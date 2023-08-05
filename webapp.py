@@ -28,7 +28,7 @@ def download_file_from_url(url, file_name):
     print("File downloaded successfully!")
 
 # Replace with the provided Google Drive file URL
-file_url = "https://drive.google.com/file/d/1SbCxkDfKfaTM9Uk5B_XSr29zlp9lF85u/view?usp=sharing"
+file_url = "https://drive.google.com/uc?id=1SbCxkDfKfaTM9Uk5B_XSr29zlp9lF85u"
 
 # Replace with your desired file name
 file_name = "similarity.pkl"
