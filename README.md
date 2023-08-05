@@ -53,3 +53,7 @@ Please make sure to have a proper understanding of the code and its requirements
 **Disclaimer:** The data used in this recommender system is from the TMDB dataset, and credit for the data goes to TMDB. This system is intended for educational and illustrative purposes only and may not provide the best recommendations for real-world applications.
 
 Demo link: https://moviesrecommendationsystem.streamlit.app/
+
+###Using webapp_user.py to Run Locally
+
+To run the web application locally, use the `webapp_user.py` script. I've created the `webapp.py` script specifically for running on Streamlit, as the `similarity.pkl` file is too large to be uploaded to GitHub. Therefore, I need to access it from Google Drive. However, you won't encounter the same issue with the `webapp_user.py` script, so feel free to use it.
