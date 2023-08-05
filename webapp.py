@@ -15,7 +15,7 @@ background-image: linear-gradient(315deg, #2234ae 0%, #191714 74%);
 """
 st.markdown(page_by_img, unsafe_allow_html=True)
 
-st.markdown("<h1 style='text-align: center; color: white;'>Movie Recommender System</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: white;'>Movies Recommender System</h1>", unsafe_allow_html=True)
 
 # Function to check if the file exists in the current directory
 def file_exists(file_path):
