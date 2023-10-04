@@ -16,7 +16,7 @@ The 'overview' column is converted into a list to concatenate it with other feat
 The tags representing each movie are then transformed into a string and converted to lowercase. This allows the model to work with a unified and consistent representation of the movie tags.
 
 ### Feature Engineering
-Next, stemming is performed on the tags to reduce the words to their root form. This process helps in reducing the dimensionality of the data while retaining semantic meaning.
+Next, lemmatization is performed on the tags to reduce the words to their root form. This process helps in reducing the dimensionality of the data while retaining semantic meaning.
 
 The CountVectorizer is then used to convert the preprocessed tags into a vector representation. This step transforms the textual data into a numerical format, suitable for computing similarities between movies.
 
@@ -35,7 +35,8 @@ To run this movie recommender system, you will need the following libraries inst
 - pandas
 - matplotlib
 - scikit-learn
-- nltk
+- nltk (if stemming is used)
+- spacy (if lemmatization is used)
 
 The dataset used in this system is the TMDB dataset ('tmdb_5000_movies.csv' and 'tmdb_5000_credits.csv'). Ensure that these datasets are available in the specified file paths.
 
