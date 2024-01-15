@@ -1,60 +1,89 @@
-# Movie Recommender System on the basis of Content-Based Filtering
+# Movie Recommender System
 
-This is a Python implementation of a movie recommender system based on the TMDB (The Movie Database) dataset. The system uses content-based filtering to recommend movies similar to a given movie. Content-based filtering relies on analyzing the content or features of items to make recommendations.
+## Introduction
 
-### Dataset
-The TMDB dataset contains information about various movies, including their titles, genres, keywords, cast, crew, budget, revenue, popularity, vote average, and more. The dataset is used to extract essential features for building the movie recommender system.
+This project aims to develop a movie recommendation system using both content-based and user-based collaborative filtering. The dataset used is from TMDB, containing movie details such as title, overview, genres, keywords, cast, and crew. The implementation is in Python, utilizing libraries like NumPy, Pandas, Scikit-learn, Matplotlib, and SpaCy.
 
-### Data Preprocessing
-Before building the recommender system, the dataset is preprocessed to extract relevant features. The important features include 'movie_id', 'title', 'overview', 'genres', 'keywords', 'cast', and 'crew'. Null values for the 'overview' column are dropped.
+## Visualizations
 
-The 'genres', 'keywords', 'cast', and 'crew' columns are initially stored as strings in the form of a list of dictionaries. A conversion function is used to extract the names of genres, keywords, cast members, and directors and store them as lists.
+The code includes visualizations showcasing various movie statistics. Bar plots display the top 10 movies based on vote average, popularity, budget, and revenue. Another plot shows the top 5 languages based on the number of movies produced.
 
-The 'overview' column is converted into a list to concatenate it with other features, creating a unified set of tags that represent each movie.
+## Content-Based Recommendation System
 
-### Data Transformation
-The tags representing each movie are then transformed into a string and converted to lowercase. This allows the model to work with a unified and consistent representation of the movie tags.
+### 1. Data Preprocessing
+- Merged movies and credits data frames based on movie title.
+- Extracted relevant features, removed movies with missing overviews, and converted string representations to lists.
+- Extracted top 3 cast members and directors.
 
-### Feature Engineering
-Next, lemmatization is performed on the tags to reduce the words to their root form. This process helps in reducing the dimensionality of the data while retaining semantic meaning.
+### 2. Feature Engineering
+- Concatenated relevant features into a 'tags' column.
+- Cleaned and lemmatized tags using SpaCy for better vectorization.
 
-The CountVectorizer is then used to convert the preprocessed tags into a vector representation. This step transforms the textual data into a numerical format, suitable for computing similarities between movies.
+### 3. TF-IDF Vectorization
+- Used TF-IDF vectorization to convert tags into numerical vectors.
+- Selected the top 5000 features to represent the movies.
 
-### Cosine Similarity
-Cosine similarity is utilized to calculate the similarity between movies. Cosine similarity computes the angle between two vectors in a multi-dimensional space. In the context of the movie recommender system, it measures the similarity between the tag vectors representing different movies.
+### 4. Cosine Similarity
+- Calculated cosine similarity between movie vectors.
+- Implemented a recommendation function suggesting five movies similar to a given movie.
 
-### Recommender Function
-The 'recommend' function takes a movie title as input and returns a list of five movies with the highest similarity (lowest angle) to the given movie. It fetches the index of the input movie in the DataFrame, computes the similarity between the input movie and all other movies, and then sorts the movies based on their similarity.
+## User-Based Collaborative Filtering
 
-### Visualizations
-The code also includes visualizations to showcase various movie statistics. Bar plots are used to display the top 10 movies based on vote average, popularity, budget, and revenue. Additionally, a bar plot shows the top 5 languages based on the number of movies produced in each language.
+### 1. Top 100 Movies Selection
+- Sorted movies based on popularity in descending order.
+- Selected the top 100 movies.
 
-### Requirements
-To run this movie recommender system, you will need the following libraries installed in your Python environment:
-- numpy
-- pandas
-- matplotlib
-- scikit-learn
-- nltk (if stemming is used)
-- spacy (if lemmatization is used)
+### 2. Generated User Data
+- Created a dataset simulating user-movie interactions for 10 users.
+- Assigned random movie ratings to simulate user preferences.
 
-The dataset used in this system is the TMDB dataset ('tmdb_5000_movies.csv' and 'tmdb_5000_credits.csv'). Ensure that these datasets are available in the specified file paths.
+### 3. User-Based Collaborative Filtering
+- Built a user-item matrix to represent user-movie interactions.
+- Calculated cosine similarity between users.
+- Recommended movies to a user based on the preferences of similar users.
 
-### Usage
-1. Load the required libraries and the TMDB dataset.
-2. Preprocess the data to extract essential features and create movie tags.
-3. Implement the movie recommender function using cosine similarity.
-4. Visualize the top 10 movies based on different criteria (vote average, popularity, budget, and revenue).
-5. Visualize the top 5 languages based on the number of movies produced.
-6. Provide a movie title as input to the 'recommend' function to receive movie recommendations.
+## Usage
 
-### Use webapp_user.py to Run Locally
+### Content-Based Recommender System
+- Load libraries and the TMDB dataset.
+- Preprocess data, implement the movie recommender function using cosine similarity.
+- Visualize top 10 movies based on different criteria and top 5 languages.
+- Provide a movie title as input to the 'recommend' function to receive movie recommendations.
 
-To run the web application locally, use the `webapp_user.py` script. I've created the `webapp.py` script specifically for running on Streamlit, as the `similarity.pkl` file is too large to be uploaded to GitHub. Therefore, I need to access it from Google Drive. However, you won't encounter the same issue with the `webapp_user.py` script, so feel free to use it.
+### User-Based Collaborative Recommender System
+- The notebook generates user data and stores it in "new_movie_dataset.csv."
+- Find the user-based collaborative filtering section in the notebook.
+- Use the `recommend_movies(user_id, num_recommendations)` function:
+  - Input the user's ID (e.g., `recommend_movies(100)`).
+  - Adjust `num_recommendations` for the desired number of movie recommendations.
+- Explore recommendations for different users by changing the user ID (100 to 110).
+- Fine-tune parameters or modify the collaborative filtering model as needed.
 
-### Note
-Please make sure to have a proper understanding of the code and its requirements before executing it. Additionally, you can further optimize or modify the system to suit your specific use case or dataset.
+## Conclusion
 
-**Disclaimer:** The data used in this recommender system is from the TMDB dataset, and credit for the data goes to TMDB. This system is intended for educational and illustrative purposes only and may not provide the best recommendations for real-world applications.
+The project successfully implemented both content-based and user-based collaborative filtering recommendation systems, providing personalized movie recommendations.
 
-Demo link: https://moviesrecommendationsystem.streamlit.app/
+## UI Implementation
+
+In addition to the backend systems, a user interface has been implemented using the Streamlit framework. This interface enhances user experience, allowing users to input preferences, view recommendations, and explore 5000 movies based on popularity.
+
+### Instructions to Run the Movie Recommender UI
+
+1. **Navigate to the Web App Directory:**
+   - Open the terminal.
+   - Change the directory to the "movie recommender webapp" folder.
+
+2. **Run the Streamlit Web App:**
+   - Type the following command in the terminal: `streamlit run webapp.py`.
+   - Press Enter to execute the command.
+
+3. **Access the Web App:**
+   - Once the command is executed, a local development server will start.
+   - Open a web browser and go to the provided URL.
+   - Explore the Movie Recommender Web App, input user preferences, and discover movie recommendations.
+
+4. **Interact with the UI:**
+   - Use the interactive features provided by the Streamlit interface to engage with the recommendation system.
+   - View recommended movies based on preferences and explore the top 100 movies.
+
+Enjoy personalized movie recommendations through the user-friendly web interface!
